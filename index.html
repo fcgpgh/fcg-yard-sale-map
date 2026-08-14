@@ -143,12 +143,23 @@
     width:100%;height:100%;border-radius:50%;background:var(--c,#999);
     border:2.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45);
     display:flex;align-items:center;justify-content:center;
-    color:#3a2c00;font-weight:700;font-size:12px;font-family:inherit;
+    color:#eeeeee;font-weight:700;font-size:12px;font-family:inherit;
   }
-  .pin--dim{opacity:.25}
-  .pin--hl{box-shadow:0 0 0 4px rgba(245,179,1,.45),0 1px 4px rgba(0,0,0,.45)}
-  .pin--visited{filter:grayscale(1);opacity:.55}
-  .pin--fest{background:#fff;font-size:20px;border:2.5px solid var(--gold)}
+  .pin--dim{
+      opacity:.25;color:#3a2c00;font-weight:700;font-size:12px;font-family:inherit;
+  }
+  .pin--hl{
+      box-shadow:0 0 0 4px rgba(245,179,1,.45),0 1px 4px rgba(0,0,0,.45);
+      color:#3a2c00;font-weight:700;font-size:12px;font-family:inherit;
+  }
+  .pin--visited{
+      filter:grayscale(1);opacity:.55;
+      color:#3a2c00;font-weight:700;font-size:12px;font-family:inherit;
+  }
+  .pin--fest{
+      background:#fff;font-size:20px;border:2.5px solid var(--gold);
+      color:#3a2c00;font-weight:700;font-size:12px;font-family:inherit;
+  }
 
   /* popup */
   .leaflet-popup-content{margin:12px 14px;min-width:200px}
@@ -572,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // One uniform pin color for every house. Categories are internal
   // search/filter helpers only — never displayed on a listing, so no
   // house gets visually "pigeonholed" by one item type.
-  const PIN_COLOR = "#2a6b52";
+  const PIN_COLOR = "#661B51";
 
   // category names for the filter chips (alphabetical; internal "Misc" hidden)
   const CATEGORIES = [...new Set(STOPS.flatMap(s => s.festival ? [] : s.categories))]
