@@ -693,7 +693,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderChips() {
     let html = CATEGORIES.map(c =>
-      `<span class="chip${activeCats.has(c) ? " active" : ""}" data-cat="${c}">${c}</span>`
+      `<span class="chip${activeCats.has(c) ? " active" : ""}" data-cat="${c}">${c==="Lemonade Stand" ? '&#127819; Lemonade Stand' : c}</span>`
     ).join("");
     if (activeCats.size || query) html += `<span class="chip chip-clear">Clear all &times;</span>`;
     elChips.innerHTML = html;
