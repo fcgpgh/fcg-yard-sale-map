@@ -809,7 +809,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let h = `<div class="pp"><div class="pp-addr">${stop.festival ? "\u{1F3AA} " : ""}${stop.address}</div>`;
     if (stop.festival) {
       h += `<div class="pp-items">${stop.items}</div>`;
-      h += `<button class="pill on pp-cta" onclick="openFestival()">\u{1F446} Tap here for the full lineup:<br>music &middot; vendors &middot; food trucks</button>`;
+      //h += `<button class="pill on pp-cta" onclick="openFestival()">\u{1F446} Tap here for the full lineup:<br>music &middot; vendors &middot; food trucks</button>`;
     } else {
       h += `<div class="pp-items">${stop.items}</div>`;
     }
