@@ -283,15 +283,17 @@
 
 <div class="modal-bg hidden" id="welcome">
   <div class="modal">
-    <img class="modal-logo" src="hpcc-logo.jpg" alt="Highland Park Community Council">
+    <img class="modal-logo" src="fcg-wide-logo.png" alt="Friendship Community Group">
     <h2>Welcome, neighbor!</h2>
-    <p><strong><span id="welcomeCount">160+</span> households</strong> are selling across the neighborhood today. This map is your guide to all of them.</p>
+    <p><strong><span id="welcomeCountHouses">160+</span> households</strong> & <strong><span id="welcomeCountBazaar">10+</span> sellers at Baum Grove Bazaar</strong> are selling across the neighborhood today. This map is your guide to all of them.</p>
     <ul class="how">
       <li><span class="ic">&#128205;</span><span><strong>Tap any pin</strong> to see what that house is selling.</span></li>
       <li><span class="ic">&#128269;</span><span><strong>Search for items</strong> &mdash; try &ldquo;bikes&rdquo; or &ldquo;records&rdquo; &mdash; and matching stops light up on the map.</span></li>
       <li><span class="ic">&#11088;</span><span><strong>Star the stops you want to hit</strong> &mdash; they turn gold on the map, and the <strong>My List</strong> tab makes them a numbered route you can reorder and check off as you go.</span></li>
       <li><span class="ic">&#129517;</span><span><strong>Tap &ldquo;Find Me&rdquo;</strong> up top to see where you are relative to the sales as you walk.</span></li>
-      <li><span class="ic">&#127914;</span><span><strong>Take a break</strong> at the Bryant Street Festival &mdash; live music, food trucks, 40+ vendors. <a href="#" onclick="dismissWelcome();openFestival();return false">See the lineup &rarr;</a></span></li>
+      <li><span class="ic">&#127914;</span><span><strong>Be sure to visit</strong> the sellers at the Baum Grove Bazaar.</span></li>
+      <li><span class="ic">&#128701;</span><span><strong>Restrooms</strong> are located at 5450 Friendship Ave.</span></li>
+      <li><span class="ic">&#x2615;</span><span><strong>Take a break</strong> visit our local coffee shops in and around the neighborhood.</span></li>
     </ul>
     <p class="fine">Everything saves on your phone automatically &mdash; no account, no sign-in. Reopen this guide anytime with the <strong>?</strong> button at the top.</p>
     <p><a href="2026%20Highland%20Park%20Yard%20Sale%20Printable%20Map.pdf" target="_blank" rel="noopener">Download the printable map (PDF)</a></p>
@@ -489,7 +491,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // HOUSE_COUNT is derived BEFORE the festival entry is pushed. Never
   // hardcode house counts in copy; counts are computed.
-  const HOUSE_COUNT = STOPS.length;
+  const BAZAAR_COUNT = STOPS.filter(stop =>
+    stop.address.trim().startsWith("Baum Grove")
+  ).length
+  const HOUSE_COUNT = STOPS.length - BAZAAR_COUNT;
 
   // Festival lineup — rendered by the festival modal (openFestival).
   const FESTIVAL_SCHEDULE = [
@@ -603,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- persisted state (per device) ---------- */
   const KEYS = { saved:"yardSaveSaved", checked:"yardSaveChecked", visited:"yardSaveVisited", order:"yardSaveOrder" };
   // bump the suffix to re-show the welcome modal to everyone
-  const WELCOME_KEY = "hpccWelcomeSeen_v2";
+  const WELCOME_KEY = "fcgWelcomeSeen";
 
   function load(key, fallback) {
     try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
@@ -1105,8 +1110,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- header count ---------- */
   document.getElementById("houseCount").textContent =
-    `${HOUSE_COUNT} households + Bryant St Festival`;
-  document.getElementById("welcomeCount").textContent = HOUSE_COUNT;
+    `${HOUSE_COUNT} households + ${BAZAAR_COUNT} sellers at Baum Grove Bazaar`;
+  document.getElementById("welcomeCountHouses").textContent = HOUSE_COUNT;
+  document.getElementById("welcomeCountBazaar").textContent = BAZAAR_COUNT;
 
   /* ---------- handlers referenced from inline onclick HTML ----------
      If you add a new function referenced from HTML, add it here. */
