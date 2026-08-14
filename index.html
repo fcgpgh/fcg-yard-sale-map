@@ -160,6 +160,9 @@
       background:#fff;font-size:20px;border:2.5px solid var(--gold);
       color:#3a2c00;font-weight:700;font-size:12px;font-family:inherit;
   }
+  .pin--gold{
+      color:#3a2c00;font-weight:700;font-size:12px;font-family:inherit;
+  }
 
   /* popup */
   .leaflet-popup-content{margin:12px 14px;min-width:200px}
@@ -605,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gold = num > 0 || isSaved;
     const color = gold ? "var(--gold)" : PIN_COLOR;
     const size = state === "hl" ? 34 : (gold ? 28 : 24);
-    const cls = "pin" + (state === "dim" ? " pin--dim" : "") + (state === "hl" ? " pin--hl" : "") + (state === "visited" ? " pin--visited" : "");
+    const cls = "pin" + (state === "dim" ? " pin--dim" : "") + (state === "hl" ? " pin--hl" : "") + (state === "visited" ? " pin--visited" : "") + (gold ? " pin--gold" : "");
     const pin_id = !id ? "" : id;
     return L.divIcon({
       className: "",
