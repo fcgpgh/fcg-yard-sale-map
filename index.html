@@ -725,7 +725,7 @@ document.addEventListener('DOMContentLoaded', () => {
       );
       const houses = shown.filter(s => !s.festival).length;
       elInfo.textContent = (matched || activeCats.size)
-        ? `Showing ${houses} of ${HOUSE_COUNT} stops` + (query ? ` matching “${query}”` : "")
+        ? `Showing ${houses} of ${HOUSE_COUNT + BAZAAR_COUNT} stops` + (query ? ` matching “${query}”` : "")
         : "";
       if (!shown.length) {
         html = `<li class="empty">No stops match &ldquo;${query}&rdquo;. Try another word &mdash; or browse the pins!</li>`;
